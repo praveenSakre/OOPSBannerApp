@@ -34,7 +34,7 @@ public class QuantityMeasurementApp {
         @Override
         public boolean equals(Object object) {
             if(this == object)
-                 return true;
+                return true;
 
             if(object == null || this.getClass() != object.getClass())
                 return false;
@@ -115,9 +115,9 @@ public class QuantityMeasurementApp {
      * Static methods for demonstrate Feet Equality
      */
     public static void demonstrateFeetEquality() {
-            Feet first = new Feet(1.0);
-            Feet second = new Feet(1);
-            System.out.println("Equal ("+ first.equals(second) + ")");
+        Feet first = new Feet(1.0);
+        Feet second = new Feet(1);
+        System.out.println("Equal ("+ first.equals(second) + ")");
     }
 
     /**
@@ -133,11 +133,35 @@ public class QuantityMeasurementApp {
      * Static method to check feet to inches equality
      */
     public static void demonstrateFeetToInchesEquality() {
-            Feet feet = new Feet(1456.899);
-            Inches inches = new Inches(17482.788);
-            System.out.println("Equal ("+compareFeetAndInches(feet,inches)+")");
+        Feet feet = new Feet(1456.899);
+        Inches inches = new Inches(17482.788);
+        System.out.println("Equal ("+compareFeetAndInches(feet,inches)+")");
     }
 
+    // Uc3 implmentation
+
+    public static boolean demonstrateLengthEquality(Length length1, Length length2) {
+        return length1.equals(length2);
+    }
+
+
+    public static void demonstrateLengthFeetEquality() {
+        Length feet1 = new Length(12, LengthUnit.FEET);
+        Length feet2 = new Length(12, LengthUnit.FEET);
+        System.out.println("Equal ("+demonstrateLengthEquality(feet1,feet2)+")");
+    }
+
+    public static void demonstrateLengthInchesEquality() {
+        Length inches1 = new Length(12, LengthUnit.INCHES);
+        Length inches2 = new Length(12, LengthUnit.INCHES);
+        System.out.println("Equal ("+demonstrateLengthEquality(inches1,inches2)+")");
+    }
+
+    public static void demonstrateLengthFeetInchesComparison() {
+        Length feet = new Length(12, LengthUnit.FEET);
+        Length inches = new Length(144, LengthUnit.INCHES);
+        System.out.println("Equal ("+demonstrateLengthEquality(feet,inches)+")");
+    }
     /**
      * main method to demonstrate Inches , Feet, feet-to-inches Equality check
      * @param args
@@ -146,5 +170,10 @@ public class QuantityMeasurementApp {
         demonstrateFeetEquality();
         demonstrateInchesEquality();
         demonstrateFeetToInchesEquality();
+
+        // Uc3 implementation
+        demonstrateLengthFeetEquality();
+        demonstrateLengthInchesEquality();
+        demonstrateLengthFeetInchesComparison();
     }
 }

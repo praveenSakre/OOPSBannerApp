@@ -2,6 +2,7 @@ package com.apps.quantitymeasurement;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 /**
  * QuantityMeasurementApp - UC1: Feet mesurement quality
@@ -127,9 +128,9 @@ public class QuantityMeasurementAppTest {
     @Test
     public void testInchesEquality_DifferentClass() {
         boolean expected = false;
-         Object differentClassObj = new Object();
-         QuantityMeasurementApp.Inches inches = new QuantityMeasurementApp.Inches(24);
-         Assertions.assertEquals(expected, inches.equals(differentClassObj));
+        Object differentClassObj = new Object();
+        QuantityMeasurementApp.Inches inches = new QuantityMeasurementApp.Inches(24);
+        Assertions.assertEquals(expected, inches.equals(differentClassObj));
     }
 
     /**
@@ -156,4 +157,83 @@ public class QuantityMeasurementAppTest {
         QuantityMeasurementApp.Inches inches2 = inches1;
         Assertions.assertEquals(expected, inches1.equals(inches2));
     }
+
+    @Test
+    public void testFeetEquality() {
+        boolean expected = true;
+        Length feet1 = new Length(12, LengthUnit.FEET);
+        Length feet2 = new Length(12, LengthUnit.FEET);
+        Assertions.assertEquals(expected, QuantityMeasurementApp.demonstrateLengthEquality(feet1, feet2));
+    }
+
+    @Test
+    public void testInchesEquality() {
+        boolean expected = true;
+        Length inches1 = new Length(12, LengthUnit.INCHES);
+        Length inches2 = new Length(12, LengthUnit.INCHES);
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(inches1, inches2));
+    }
+
+    @Test
+    public void testFeetInchesComparison() {
+        boolean expected = true;
+        Length feet = new Length(3, LengthUnit.FEET);
+        Length inches = new Length(36, LengthUnit.INCHES);
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(feet, inches));
+    }
+
+    @Test
+    public void testFeetInequality() {
+        boolean expected = false;
+        Length feet1 = new Length(12, LengthUnit.FEET);
+        Length feet2 = new Length(20, LengthUnit.FEET);
+        Assertions.assertEquals(expected, QuantityMeasurementApp.demonstrateLengthEquality(feet1, feet2));
+    }
+
+    @Test
+    public void testInchesInequality() {
+        boolean expected = false;
+        Length inches1 = new Length(50, LengthUnit.INCHES);
+        Length inches2 = new Length(12, LengthUnit.INCHES);
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(inches1, inches2));
+    }
+
+    @Test
+    public void testCrossUnitInquality() {
+        boolean expected = false;
+        Length feet = new Length(21, LengthUnit.FEET);
+        Length inches = new Length(36, LengthUnit.INCHES);
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(feet, inches));
+    }
+
+    @Test
+    public void testMultipleFeetComparison() {
+        boolean expected =  true;
+        Length feet1 = new Length(21, LengthUnit.FEET);
+        Length feet2 = new Length(21, LengthUnit.FEET);
+        Length feet3 = new Length(79, LengthUnit.FEET);
+        Length feet4 = new Length(79, LengthUnit.FEET);
+        Length feet5 = new Length(51.5, LengthUnit.FEET);
+        Length feet6 = new Length(51.5, LengthUnit.FEET);
+
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(feet1, feet2));
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(feet3, feet4));
+        Assertions.assertEquals(expected,
+                QuantityMeasurementApp.demonstrateLengthEquality(feet5, feet6));
+
+
+    }
+
+
+
+
+
+
+
 }
