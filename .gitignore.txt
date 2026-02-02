@@ -6,6 +6,7 @@
 *.iws
 *.iml
 *.ipr
+*.mvn
 
 # Compiled class file
 *.class
