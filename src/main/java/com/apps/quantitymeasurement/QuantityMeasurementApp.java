@@ -138,29 +138,62 @@ public class QuantityMeasurementApp {
         System.out.println("Equal ("+compareFeetAndInches(feet,inches)+")");
     }
 
-    // Uc3 implmentation
+    /**
+     * Uc3 implementation
+     * Static method to check length equality
+     * @param length1
+     * @param length2
+     * @return
+     */
 
     public static boolean demonstrateLengthEquality(Length length1, Length length2) {
         return length1.equals(length2);
     }
 
 
+    /**
+     * Static method to check length feet equality
+     */
     public static void demonstrateLengthFeetEquality() {
         Length feet1 = new Length(12, LengthUnit.FEET);
         Length feet2 = new Length(12, LengthUnit.FEET);
         System.out.println("Equal ("+demonstrateLengthEquality(feet1,feet2)+")");
     }
 
+    /**
+     * Static method to check Length inches equality
+     */
     public static void demonstrateLengthInchesEquality() {
         Length inches1 = new Length(12, LengthUnit.INCHES);
         Length inches2 = new Length(12, LengthUnit.INCHES);
         System.out.println("Equal ("+demonstrateLengthEquality(inches1,inches2)+")");
     }
 
+    /**
+     * static method to check feetTOInches comparison
+     */
     public static void demonstrateLengthFeetInchesComparison() {
         Length feet = new Length(12, LengthUnit.FEET);
         Length inches = new Length(144, LengthUnit.INCHES);
         System.out.println("Equal ("+demonstrateLengthEquality(feet,inches)+")");
+    }
+
+    /**
+     * method to check yardtoInches comparison
+     */
+    public static void demonstrateLengthYardsInchesComparison() {
+        Length length = new Length(1.0, LengthUnit.YARDS);
+        Length lengthInches = new Length(36, LengthUnit.INCHES);
+        System.out.println("Equal ("+demonstrateLengthEquality(length,lengthInches)+")");
+    }
+
+    /**
+     * Static method to check centimeter to inches comparison
+     */
+    public static void demonstrateLengthCentimeterInchesComparison() {
+        Length length = new Length(100.0, LengthUnit.CENTIMETERS);
+        Length lengthInches = new Length(39.3701, LengthUnit.INCHES);
+        System.out.println("Equal ("+demonstrateLengthEquality(length,lengthInches)+")");
     }
     /**
      * main method to demonstrate Inches , Feet, feet-to-inches Equality check
@@ -175,5 +208,9 @@ public class QuantityMeasurementApp {
         demonstrateLengthFeetEquality();
         demonstrateLengthInchesEquality();
         demonstrateLengthFeetInchesComparison();
+
+        // uc4
+        demonstrateLengthYardsInchesComparison();
+        demonstrateLengthCentimeterInchesComparison();
     }
 }

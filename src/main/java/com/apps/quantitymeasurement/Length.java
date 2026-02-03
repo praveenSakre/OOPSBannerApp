@@ -29,9 +29,7 @@ public class Length {
      * @return
      */
     private double convertToBaseUnit(Length length) {
-        if(!length.unit.equals(LengthUnit.FEET))
-            return (length.value / LengthUnit.FEET.getConversionFactor());
-        return length.value;
+        return length.value * LengthUnit.valueOf(length.unit.name()).getConversionFactor();
     }
 
     /**
