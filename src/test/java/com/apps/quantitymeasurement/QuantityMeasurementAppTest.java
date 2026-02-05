@@ -2,7 +2,6 @@ package com.apps.quantitymeasurement;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 /**
  * QuantityMeasurementApp - UC1: Feet mesurement quality
@@ -454,5 +453,216 @@ public class QuantityMeasurementAppTest {
 
         Assertions.assertEquals(expected, yards.equals(feet));
         Assertions.assertEquals(expected, feet.equals(inches));
+    }
+
+    /**
+     * Test Feet to inches conversion
+     */
+    @Test
+    public void testConversion_FeetToInches_OverloadedMethod() {
+        Length expected = new Length(12.0, LengthUnit.INCHES);
+        Length length = new Length(1.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test inches to feet conversion
+     */
+    @Test
+    public void testConversion_InchesToFeet_OverloadedMethod() {
+        Length expected = new Length(2.0, LengthUnit.FEET);
+        Length length = new Length(24.0, LengthUnit.INCHES);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.FEET);
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    /**
+     * Test yards to inches conversion
+     */
+    @Test
+    public void testConversion_yardsToInches_OverloadedMethod() {
+        Length expected = new Length(36.0, LengthUnit.INCHES);
+        Length length = new Length(1.0, LengthUnit.YARDS);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test inches to yards conversion
+     */
+    @Test
+    public void testConversion_InchesToYards_OverloadedMethod() {
+        Length expected = new Length(2.0, LengthUnit.YARDS);
+        Length length = new Length(72.0, LengthUnit.INCHES);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.YARDS);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test cnetimeters to inches conversion
+     */
+    @Test
+    public void testConversion_CentimeterToInches_OverloadedMethod() {
+        Length expected = new Length(1.0, LengthUnit.INCHES);
+
+        Length length = new Length(2.54, LengthUnit.CENTIMETERS);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test Feet to yards conversion
+     */
+    @Test
+    public void testConversion_FeetToYards_OverloadedMethod() {
+        Length expected = new Length(2.0, LengthUnit.YARDS);
+        Length length = new Length(6.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.YARDS);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test Zero values
+     */
+    @Test
+    public void testConversion_ZeroValue_OverloadedMethod() {
+        Length expected = new Length(0.0, LengthUnit.INCHES);
+        Length length = new Length(0.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    /**
+     * Test Negative values
+     */
+    @Test
+    public void testConversion_NegativeValue_OverloadedMethod() {
+        Length expected = new Length(-12.0, LengthUnit.INCHES);
+        Length length = new Length(-1.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test with null values should throw excpetion
+     */
+    @Test
+    public void testConversion_InvalidUnit_throws_OverloadedMethod() {
+        Throwable exception = Assertions.assertThrows(
+          IllegalArgumentException.class,
+                () -> {
+                    Length length = new Length(1.0, LengthUnit.FEET);
+                    Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, null);
+                }
+        );
+        Assertions.assertEquals("Invalid value or unit provided.", exception.getMessage());
+    }
+
+    /**
+     * Test Feet to inches conversion
+     */
+    @Test
+    public void testConversion_FeetToInches_OverloaddMethod() {
+        Length expected = new Length(12.0, LengthUnit.INCHES);
+        Length length = new Length(1.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test inches to feet conversion
+     */
+    @Test
+    public void testConversion_InchesToFeet_OverloadedMethd() {
+        Length expected = new Length(2.0, LengthUnit.FEET);
+        Length length = new Length(24.0, LengthUnit.INCHES);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.FEET);
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    /**
+     * Test yards to inches conversion
+     */
+    @Test
+    public void testConversion_yardsToInches_OverloadedMethd() {
+        Length expected = new Length(36.0, LengthUnit.INCHES);
+        Length length = new Length(1.0, LengthUnit.YARDS);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test inches to yards conversion
+     */
+    @Test
+    public void testConversion_InchesToYards__OverloadedMethod() {
+        Length expected = new Length(2.0, LengthUnit.YARDS);
+        Length length = new Length(72.0, LengthUnit.INCHES);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.YARDS);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test cnetimeters to inches conversion
+     */
+    @Test
+    public void testConversion_CentimeterToInches_OverloadedMethd() {
+        Length expected = new Length(1.0, LengthUnit.INCHES);
+        Length length = new Length(2.54, LengthUnit.CENTIMETERS);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test Feet to yards conversion
+     */
+    @Test
+    public void testConversion_FeetToYards_OverloadedMethd() {
+        Length expected = new Length(2.0, LengthUnit.YARDS);
+        Length length = new Length(6.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.YARDS);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test Zero values
+     */
+    @Test
+    public void testConversion_ZeroValue_OverloadedMethd() {
+        Length expected = new Length(0.0, LengthUnit.INCHES);
+        Length length = new Length(0.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    /**
+     * Test Negative values
+     */
+    @Test
+    public void testConversion_NegativeValue_OverloadedMethd() {
+        Length expected = new Length(-12.0, LengthUnit.INCHES);
+        Length length = new Length(-1.0, LengthUnit.FEET);
+        Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, LengthUnit.INCHES);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * Test with null values should throw excpetion
+     */
+    @Test
+    public void testConversion_InvalidUnit_throws_OverloadedMethd() {
+        Throwable exception = Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    Length length = new Length(1.0, LengthUnit.FEET);
+                    Length actual = QuantityMeasurementApp.demonstrateLengthConversion(length, null);
+                }
+        );
+        Assertions.assertEquals("Invalid value or unit provided.", exception.getMessage());
     }
 }

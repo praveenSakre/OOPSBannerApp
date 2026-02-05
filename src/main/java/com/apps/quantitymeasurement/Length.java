@@ -1,5 +1,7 @@
 package com.apps.quantitymeasurement;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 /**
@@ -64,5 +66,18 @@ public class Length {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    public Length convertTo(Length targetUnit, LengthUnit unit) {
+
+        if(targetUnit == null || unit == null )
+            throw new IllegalArgumentException("Invalid value or unit provided.");
+
+        if(Double.isFinite(targetUnit.value) && targetUnit.value == 0)
+            return targetUnit;
+
+        double targetLength = convertToBaseUnit(targetUnit) / unit.getConversionFactor();
+        BigDecimal round = new BigDecimal(targetLength).setScale(2, RoundingMode.DOWN);
+        return new Length(round.doubleValue(), unit);
     }
 }

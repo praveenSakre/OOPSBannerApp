@@ -1,5 +1,6 @@
 package com.apps.quantitymeasurement;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -195,6 +196,29 @@ public class QuantityMeasurementApp {
         Length lengthInches = new Length(39.3701, LengthUnit.INCHES);
         System.out.println("Equal ("+demonstrateLengthEquality(length,lengthInches)+")");
     }
+
+    /**
+     * Static method length conversion based on unit
+     * @param length
+     * @param toUnit
+     * @return
+     */
+    public static Length demonstrateLengthConversion(Length length, LengthUnit toUnit) {
+        return length.convertTo(length, toUnit);
+    }
+
+    /**
+     * Static method length conversion based on value, from & to
+     * @param value
+     * @param fromUnit
+     * @param toUnit
+     * @return
+     */
+    public static Length demonstrateLengthConversion(Double value, LengthUnit fromUnit, LengthUnit toUnit) {
+        Length lengthFrom = new Length(value, fromUnit);
+        return lengthFrom.convertTo(lengthFrom, toUnit);
+    }
+
     /**
      * main method to demonstrate Inches , Feet, feet-to-inches Equality check
      * @param args
@@ -212,5 +236,18 @@ public class QuantityMeasurementApp {
         // uc4
         demonstrateLengthYardsInchesComparison();
         demonstrateLengthCentimeterInchesComparison();
+
+        // uc5
+        Length length = new Length(23, LengthUnit.FEET);
+        demonstrateLengthConversion(length, LengthUnit.INCHES);
+        demonstrateLengthConversion(length, LengthUnit.YARDS);
+        demonstrateLengthConversion(length, LengthUnit.CENTIMETERS);
+
+        demonstrateLengthConversion(23.0, LengthUnit.FEET, LengthUnit.INCHES);
+        demonstrateLengthConversion(23.0, LengthUnit.FEET, LengthUnit.YARDS);
+        demonstrateLengthConversion(23.0, LengthUnit.FEET, LengthUnit.CENTIMETERS);
+
+        Length length1 = new Length(21, LengthUnit.CENTIMETERS);
+        demonstrateLengthConversion(length1, LengthUnit.INCHES);
     }
 }
